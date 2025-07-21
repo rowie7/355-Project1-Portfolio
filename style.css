@@ -163,17 +163,20 @@ body {
 }
 
 .typing-effect {
+    display: inline-block;
     font-size: 48px;
     font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
     border-right: 3px solid #fff;
     color: #fff;
-    animation: typing 3s steps(36,end) forwards, blink 0.75s step-end infinite;
+    animation: typing 3s steps(29,end) forwards, blink 0.75s step-end infinite;
     
 }
 
 @keyframes typing {
-    from {max-width: 0; }
-    to { max-width: 36ch; }
+    from {width: 0; }
+    to { width: 29ch; }
 }
 
 @keyframes blink {
