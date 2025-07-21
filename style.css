@@ -98,12 +98,13 @@ body {
     align-items: center;
     padding: 80px 10%;
     flex-wrap: wrap;
-    gap: 60px;
+    gap: 100px;
 }
 
 .home-left {
     flex: 1;
     min-width: 300px;
+    max-width: 600px;
 }
 
 .home-left h1 {
@@ -129,6 +130,23 @@ body {
     margin-top: 30px;
 }
 
+.home-title{
+    display: inline-block;;
+    width: 36ch;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.home-title::after {
+    
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #fff;
+    font-size: 48px;
+    animation: blink 0.75s step-end infinite;
+}
+
 .btn-home {
     display: inline-block;
     padding: 14px 40px;
@@ -147,17 +165,15 @@ body {
 .typing-effect {
     font-size: 48px;
     font-weight: 700;
-    white-space: nowrap;
-    overflow: hidden;
-    display: inline-block;
+    border-right: 3px solid #fff;
     color: #fff;
-    width: 0;
-    animation: typing 3s steps(36,end) forwards;
+    animation: typing 3s steps(36,end) forwards, blink 0.75s step-end infinite;
+    
 }
 
 @keyframes typing {
-    from { width: 0; }
-    to { width: 31ch; }
+    from {max-width: 0; }
+    to { max-width: 36ch; }
 }
 
 @keyframes blink {
@@ -703,6 +719,39 @@ body {
     color: white;
     cursor: pointer;
 }
+
+@media (max-width: 1200px) {
+    .home-container {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .home-title{
+        max-width: 100%;
+    }
+    .home-left h1 {
+        font-size: 42px;
+    }
+
+    .home-left .home-subtitle {
+        font-size: 28px;
+    }
+
+    .home-left .home-description {
+        font-size: 18px;
+    }
+
+    .home-right img {
+        width: 300px;
+        height: auto;
+    }
+
+    .typing-effect{
+        font-size: 36px;
+    }
+}
+
 
 @media (max-width: 1100px) {
     .header nav#main-nav {
