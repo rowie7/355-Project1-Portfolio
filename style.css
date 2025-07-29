@@ -19,17 +19,21 @@ body {
 }
 
 .section-page {
-    display: none;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    pointer-events: none;
+  padding: 40px 20px;         
+  margin: 0 auto;             
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+  min-height: unset;          
 }
 
+
 .section-page.active {
-    display: block;
-    opacity: 1;
-    pointer-events: auto;
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
 }
+
 
 .header {
     background: black;
@@ -99,6 +103,7 @@ body {
     padding: 80px 10%;
     flex-wrap: wrap;
     gap: 60px;
+    margin-bottom: 100px;
 }
 
 .home-left {
@@ -206,6 +211,87 @@ body {
     box-shadow: 0 0 80px #ff4d4d;
 }
 
+.background-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 60px 10%;
+    flex-wrap: wrap;
+}
+
+.background-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.background-text h3 {
+    font-size: 1.8rem;
+    color: #ff4b4b;
+    margin-bottom: 20px;
+}
+
+.background-text p {
+    color: #fff;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.background-state {
+  position: relative;
+  max-width: 450px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.background-slide.flag{
+    object-fit: contain;
+    
+}
+
+.background-state img {
+ max-width: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(255, 77, 77, 0.2);
+}
+
+.background-state img.active {
+  display: block;
+}
+
+.background-wrapper {
+  width: 100%;
+  max-width: 700px;
+  height: 400px; 
+  margin: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.background-slide {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  width: auto;             
+  object-fit: cover;         
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(255, 77, 77, 0.2);
+  display: none;
+}
+
+.background-slide.active {
+  display: block;
+}
+
 .section {
     padding: 80px 10%;
     background: #181818;
@@ -220,7 +306,7 @@ body {
 .section p,
 .section ul {
     font-size: 18px;
-    color: #ddd;
+    color: #fff;
 }
 
 .section ul li {
@@ -230,7 +316,7 @@ body {
 .about-description {
     text-align: center;
     font-size: 16px;
-    color: #ddd;
+    color: #fff;
     margin-top: 10px;
     margin-bottom: 40px;
     max-width: 800px;
@@ -283,7 +369,7 @@ body {
 
 .about-card p {
     font-size: 17px;
-    color: #ddd;
+    color: #fff;
     line-height: 1.6;
     text-align: center;
 }
@@ -333,12 +419,27 @@ body {
     }
 
  .about-cards-grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
     }
 
 .about-card {
         width: 90%;
+        max-width: 500px;
     }
+
+.hobbies-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hobbies-content {
+    width: 90%;
+    max-width: 500px;
+  }
+
 }
 
 .about-card img {
@@ -351,23 +452,69 @@ body {
 }
 
 .hobbies-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  position: relative;
+  padding: 60px 20px;
+}
+
+.hobbies-row{
     display: flex;
-    gap: 20px;
+    flex-wrap: nowrap;
     justify-content: center;
-    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.hobbies-container::before {
+  content: '';
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  width: 80%;
+  height: 80%;
+ background-image: 
+  linear-gradient(to right, rgba(255, 77, 77, 0.15) 1px, transparent 1px),
+  linear-gradient(to bottom, rgba(255, 77, 77, 0.15) 1px, transparent 1px);
+  background-size: 80px 80px;
+  z-index: 0;
+  transform: translateX(-50%);
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+.hobbies-container::after {
+  content: '';
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  width: 80%;
+  height: 80%;
+  background-image:
+    radial-gradient(circle, rgba(255, 77, 77, 0.2) 2px, transparent 2px);
+  background-size: 160px 200px;
+  background-repeat: repeat;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .hobbies-content {
+    position: relative;
+    z-index: 1;
     background: #262626;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(255,0,0,0.15);
     transition: transform 0.3s ease;
-    width: 500px;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
 }
 
 .hobbies-content:hover {
-    transform: scale(1.05);
+    transform: translateY(-8px);
     box-shadow: 0 0 60px rgba(255, 77, 77, 0.2);
 }
 
@@ -421,6 +568,8 @@ body {
     font-size: 20px;
     cursor: pointer;
     transition: background 0.3s, transform 0.2s;
+    position: relative;
+    top: 0;
 }
 
 .arrow-buttons button:hover {
@@ -428,6 +577,10 @@ body {
     transform: scale(1.05);
 }
 
+.arrow-buttons button:active {
+    transform: scale(1.05) translateY(0); 
+    background: #bfbfbf;
+}
 
 .timeline {
     position: relative;
@@ -507,7 +660,7 @@ body {
 
 .timeline-content p {
     font-size: 18px;
-    color: #ddd;
+    color: #fff;
     line-height: 1.8;
 }
 
@@ -546,7 +699,7 @@ body {
 }
 
 .education-card p {
-    color: #ddd;
+    color: #fff;
     margin-bottom: 10px;
     font-size: 18px;
     line-height: 1.8;
@@ -619,7 +772,7 @@ body {
 .contact-left p {
     margin-top: 20px;
     font-size: 18px;
-    color: #ddd;
+    color: #fff;
 }
 
 .contact-left p i {
@@ -687,7 +840,7 @@ body {
 .menu-toggle {
     display: none;
     font-size: 30px;
-    color: white;
+    color: #fff;
     cursor: pointer;
 }
 
@@ -716,7 +869,7 @@ body {
 }
 
 .side-menu ul li a {
-    color: white;
+    color: #fff;
     text-decoration: none;
     font-size: 22px;
     font-weight: 600;
@@ -735,7 +888,7 @@ body {
 .menu-toggle {
     display: none;
     font-size: 30px;
-    color: white;
+    color: #fff;
     cursor: pointer;
     z-index: 2100;
 }
@@ -745,7 +898,7 @@ body {
     top: 20px;
     right: 20px;
     font-size: 28px;
-    color: white;
+    color: #fff;
     cursor: pointer;
 }
 
